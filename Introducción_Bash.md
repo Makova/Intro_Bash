@@ -87,10 +87,10 @@ Para poder trabajar eficientemente en BASH, es indispensable conocer los comando
 
                                Comandos básicos para BASH
 
- Comando [Opciones]      |     Descripción del comando         |         Ejemplo de uso   |          
--- | --
+| Comando [Opciones]  |       | Descripción del comando |                | Ejemplo de uso |          
+| :--------------
 
-cat fich1 [...fichN]           Concatena y muestra un archivos            cat /etc/passwd 
+cat fich1 [...fichN]           Concatena y muestra un archivos             cat /etc/passwd 
 cd [dir]                       Cambia de directorio                        cd /tmp
 chmod permisos fich            Cambia los permisos de un archivo           chmod +x miscript
 chown usuario:grupo fich       Cambia el dueño de un archivo               chown nobody miscript                                             
