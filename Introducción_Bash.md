@@ -289,4 +289,5 @@ Cuando se inicia Bash en el modo posix, por ejemplo con la opción --posix, sigu
 
 Bash intenta determinar cuando está siendo ejecutado por un dominio de shell remoto, normalmente rshd. Si Bash determina que está siendo ejecutado por rshd, lee y ejecuta órdenes desde ~/.bashrc, si este archivo existe y es legible. No hará esto si se invoca como sh. La opción --norc puede utilizarse para evitar este comportamiento, y la opción --rcfile puede utilizarse para forzar a leer otro archivo, pero rshd normalmente no invoca al shell con estas opciones o permite que sean especificadas.
 
-De la Wikipedia: [https://es.wikipedia.org/wiki/Bash](wiki/Bash)
+
+De la Wikipedia en: [wiki/Bash](https://es.wikipedia.org/wiki/Bash)
