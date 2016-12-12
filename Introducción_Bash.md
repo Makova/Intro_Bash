@@ -20,14 +20,14 @@ Es muy simple, en realidad. Lo que hacemos aquí al escribir primero "#!/bin/bas
     #!/bin/bash
     # Script de Hola Mundo
     echo "Hola Mundo"
-    
+
 Salida:
 
     Hola Mundo
 
 **Comentario en Bash**
 
-Pero ¿el símbolo '#' escrito al inicio de una linea, es un comentario? En realidad sí, como en la segunda linea vemos, eso es un comentario, es decir, algo que no es interpretado y está ahí para que el programador/coder/scripter se ubique y sepa que es lo que hace el código, esto ayuda a tener mejor orden y al corregir el codigo si tiene BUGS. Pero la excepción a esto, es al escribir #!/ruta/de/interprete , esto nos sirve para llamar a nuestro interprete, como perl, bash, sh, python, etc, (que son otros lenguajes) y se usa para los lenguajes interpretados, de modo que se ejecuten en donde corresponde....
+Pero ¿el símbolo '#' escrito al inicio de una linea, es un comentario? En realidad sí, como en la segunda linea vemos, eso es un comentario, es decir, algo que no es interpretado y está ahí para que el programador/coder/scripter se ubique y sepa que es lo que hace el código, esto ayuda a tener mejor orden y al corregir el código si tiene BUGS. Pero la excepción a esto, es al escribir #!/ruta/de/interprete , esto nos sirve para llamar a nuestro interprete, como perl, bash, sh, python, etc, (que son otros lenguajes) y se usa para los lenguajes interpretados, de modo que se ejecuten en donde corresponde....
 
 **Imprimiendo en Bash**
 
@@ -86,7 +86,7 @@ Ejemplo de uso:
 Para poder trabajar eficientemente en BASH, es indispensable conocer los comandos más básicos, aquí una pequeña lista que debemos conocer a la perfección:
 
                                Comandos básicos para BASH
-                               
+
 | Comando [Opciones]          | Descripción del comando                                                      | Ejemplo de uso                |
 |-----------------------------|------------------------------------------------------------------------------|-------------------------------|
 | cat fich1 [...fichN]        | Concatena y muestra un archivos                                              | cat /etc/passwd               |
@@ -128,68 +128,68 @@ Para poder trabajar eficientemente en BASH, es indispensable conocer los comando
 los guiones de bash reciben los parámetros que les pasa la shell como $1, $2,..., $n. Podemos saber cuantos hemos recibido con el símbolo $#.
 Por ejemplo, si nuestro guion necesita dos parámetros pondremos:
 
-    
+
     if [ $# -lt 2 ]; then
     echo "Necesitas pasar dos parámetros."
     exit 1
     fi
-    
+
 Además disponemos del array $@, el cual contiene todos los parámetros pasados al guion y podemos iterar sobre estos de la siguiente manera:
 
-    
+
     for param in  "$@"
     do
      echo "$param"
     done
-    
+
 
 **Matemáticas con enteros**
 
 Una gran limitación del intérprete Bourne es que no puede realizar cálculos con enteros sin lanzar un proceso externo. En cambio, un proceso Bash puede realizar cálculos con enteros utilizando la orden((...)) y la sintaxis de variables $[...] de la siguiente manera:
 
-    
+
     VAR=55                 # Asigna el valor        entero 55 a la variable VAR
     ((VAR = VAR + 1))      # Suma uno a la variable VAR. Observe la ausencia del carácter  '$'.
     ((++VAR))              # Otra forma de sumar uno a VAR. Preincremento estilo C.
     ((VAR++))              # Otra forma de sumar uno a VAR. Postincremento estilo C.
     echo $[VAR * 22]       # Multiplica la variable VAR por 22 y sustituye la orden por el resultado.
     echo $((VAR * 22))     # Otra forma de realizar lo mismo.
-    
 
-La orden ((...)) también se puede utilizar en sentencias condicionales, ya que su código de retorno es 0 o 1 dependiendo de si la condición cierta o falsa:
 
-    
+La orden ((...)) también se puede utilizar en sentencias condicionales, ya que su [código de retorno](https://es.wikipedia.org/w/index.php?title=C%C3%B3digo_de_retorno&action=edit&redlink=1) es 0 o 1 dependiendo de si la condición cierta o falsa:
+
+
     if ((VAR == Y * 3 + X * 2))
     then
         echo Si
     fi
     ((Z > 23)) && echo Si
-    
 
-La orden ((...)) soporta los siguientes operadores relacionales : **'==', '!=', '>', '<', '>=', y '<='.
 
-Un proceso Bash no puede realizar cálculos en coma flotante. Los únicos shell Unix capaces de esto son el Korn Shell (versión de 1993) y el zsh (a partir de la versión 4.0).
+La orden ((...)) soporta los siguientes [operadores relacionales](https://meta.wikimedia.org/wiki/w:en:Relational_operator) : **'==', '!=', '>', '<', '>=', y '<='.
+
+Un proceso Bash no puede realizar cálculos en [coma flotante](https://es.wikipedia.org/wiki/Coma_flotante). Los únicos shell Unix capaces de esto son el [Korn Shell](https://es.wikipedia.org/wiki/Korn_Shell) (versión de 1993) y el zsh (a partir de la versión 4.0).
 
 **Redirecciones de entrada/salida**
 
-La sintaxis de Bash permite diferentes formar de redireción de entrada/salida de las que el shell de Bourne tradicional carece.  Bash puede redirigir la salida estándar y los flujos de error estándar a la vez utilizando la sintaxis:
+La sintaxis de Bash permite diferentes formar de [redireción](https://es.wikipedia.org/wiki/Redirecci%C3%B3n) de entrada/salida de las que el shell de Bourne tradicional carece.  Bash puede redirigir la [salida estándar](https://es.wikipedia.org/wiki/Salida_est%C3%A1ndar) y los flujos de [error estándar](https://es.wikipedia.org/wiki/Error_est%C3%A1ndar) a la vez utilizando la sintaxis:
 
-    
+
     orden >$ archivo
-    
+
 que es más simple que teclear la orden Bourne equivalente, "orden > archivo 2>&1". Desde la versión 2.05b, Bash puede redirigir la entrada estándar desde una cadena utilizando la siguiente sintaxis (denominada "here strings"):
 
-    
+
     orden <<< "cadena de leer como entrada estándar"
-    
+
 
 Si la cadena contiene espacios en blanco, deben de utilizarse comillas.
 
-*Ejemplo*: 
+*Ejemplo*:
 
-Redirige la salida estándar a un archivo, escribe datos, cierra el archivo y reinicia stdout.
+Redirige la salida estándar a un archivo, escribe datos, cierra el archivo y reinicia [stdout](https://es.wikipedia.org/w/index.php?title=Stdout&action=edit&redlink=1).
 
-    
+
     # hace que el descriptor de archivo 6 sea una copia de stdout (descriptor archivo 1)
     exec 6>&1
     # abre el archivo "test.data" para escritura
@@ -200,54 +200,54 @@ Redirige la salida estándar a un archivo, escribe datos, cierra el archivo y re
     exec 1>&6
     # cierra el descriptor de archivo 6
     exec 6>&-
-    
+
 **Abre y cierra archivos**
 
-    
+
     # abre el archivo test.data para lectura
     exec 6<test.data
     # lee hasta el final del archivo
     while read -u 6 dta
     do
-    echo "$dta" 
+    echo "$dta"
     done
     # cierra el archivo test.data
     exec 6<&-
-    
+
 
 **Captura la salida de órdenes externas**
 
-    
+
     # ejecuta 'find' y guarda los resultados en VAR
     # busca nombres de archivos que terminan con la letra "h"
     VAR=$(find . -name "*h")
-    
+
 
 **Expresiones regulares**
 
-Los procesos Bash 3.0 soportan emparejamientos de [expresiones regulares](https://es.wikipedia.org/wiki/Expresi%C3%B3n_regular) utilizando la siguiente sintaxis, reminiscente de Perl:
+Los procesos Bash 3.0 soportan emparejamientos de [expresiones regulares](https://es.wikipedia.org/wiki/Expresi%C3%B3n_regular) utilizando la siguiente sintaxis, reminiscente de [Perl](https://es.wikipedia.org/wiki/Perl):
 
-    
+
     [[ string =~ regex]]
-    
 
-La sintaxis de expresiones regulares es la misma que documenta la (página de manual regex(3))[https://es.wikipedia.org/wiki/Man_(Unix)]. El estado de salida de la orden anterior es 0 si la cadena concuerda con la expresión regular, y 1 si no casan. En las expresiones regulares puede accederse a las partes delimitadas por paréntesis, utilizando la variable shell BASH_REMATCH, de la siguiente manera:
 
-    
-    if [[ foobarbletch =~ 'foo(bar)bl(.*)']] 
+La sintaxis de expresiones regulares es la misma que documenta la [página de manual](https://es.wikipedia.org/wiki/Man_(Unix) regex(3). El estado de salida de la orden anterior es 0 si la cadena concuerda con la expresión regular, y 1 si no casan. En las expresiones regulares puede accederse a las partes delimitadas por paréntesis, utilizando la variable shell BASH_REMATCH, de la siguiente manera:
+
+
+    if [[ foobarbletch =~ 'foo(bar)bl(.*)']]
     then
          echo The regex matches!
          echo $BASH_REMATCH      -- outputs: foobarbletch
          echo ${BASH_REMATCH[1]} -- outputs: bar
          echo ${BASH_REMATCH[2]} -- outputs: etch
     fi
-    
 
-Esta sintaxis proporciona un rendimiento superior a lanzar un proceso separado para ejecutar una orden grep, porque el emparejamiento de las expresiones regulares tiene lugar en el propio proceso Bash. Si la expresión regular o la cadena contiene un espacio en blanco o un metacarácter del shell (como '*' o '?'), debe ser entrecomillada.
+
+Esta sintaxis proporciona un rendimiento superior a lanzar un proceso separado para ejecutar una orden [grep](https://es.wikipedia.org/wiki/Grep), porque el emparejamiento de las expresiones regulares tiene lugar en el propio proceso Bash. Si la expresión regular o la cadena contiene un espacio en blanco o un [metacarácter](https://es.wikipedia.org/wiki/Metacar%C3%A1cter) del shell (como '*' o '?'), debe ser entrecomillada.
 
 **Escape con contrabarra**
 
-Las palabras con la forma $'string' se tratan de un modo especial. Estas palabras se expanden a string, con los caracteres escapados por la contrabarra reemplazados según especifica el lenguaje de [programación C](https://es.wikipedia.org/wiki/Lenguaje_de_programaci%C3%B3n_C). Las secuencias de escape con contrabarra, se decodifican del siguiente modo:
+Las palabras con la forma $'string' se tratan de un modo especial. Estas palabras se expanden a string, con los caracteres escapados por la contrabarra reemplazados según especifica el [lenguaje de programación C](https://es.wikipedia.org/wiki/Lenguaje_de_programaci%C3%B3n_C). Las secuencias de escape con contrabarra, se decodifican del siguiente modo:
 
                                                  Escapes con contrabarra
 
@@ -270,9 +270,9 @@ Las palabras con la forma $'string' se tratan de un modo especial. Estas palabra
 
 Cuando Bash arranca, ejecuta las órdenes que se encuentran en diferentes guiones.
 
-Cuando se invoca a Bash como un shell interactivo para el inicio de una sesión (login shell), o como un shell no interactivo con la opción --login, en primer lugar lee y ejecuta órdenes desde el archivo /etc/profile, si existe. Después, busca ~/.bash_profile, ~/.bash_login, y ~/.profile, en este orden, y lee y ejecuta las órdenes desde el primero que existe y es legible. La opción --noprofile puede utilizarse al comenzar un nuevo shell para inhibir este comportamiento.
+Cuando se invoca a Bash como un shell interactivo para el inicio de una sesión (]]login shell]]), o como un shell no interactivo con la opción --login, en primer lugar lee y ejecuta órdenes desde el archivo /etc/profile, si existe. Después, busca ~/.bash_profile, ~/.bash_login, y ~/.profile, en este orden, y lee y ejecuta las órdenes desde el primero que existe y es legible. La opción --noprofile puede utilizarse al comenzar un nuevo shell para inhibir este comportamiento.
 
-Cuando un login shell termina, Bash lee y ejecuta las órdenes de ~/.bash_logout, si existe.
+Cuando un **login shell** termina, Bash lee y ejecuta las órdenes de ~/.bash_logout, si existe.
 
 Cuando un shell interactivo que no es un login shell arranca, Bash lee y ejecuta órdenes desde ~/.bashrc, si existiese. Esto puede evitarse utilizando la opción --norc. La opción --rcfile archivo forzará a Bash a leer y ejecutar órdenes desde archivo en lugar de ~/.bashrc.
 
@@ -431,14 +431,14 @@ Se llama bashismo al uso de características de Bash que no están contempladas 
 
 **Comandos para el apagado y reinicio del sistema**
 
-| Comando  | Descripción         |
-|----------|---------------------|
-| reboot   | Reinicia la máquina |
-| halt     | Apaga el sistema    |
-| shutdown | Apaga el sistema    |
-| init 0   | Apaga la máquina    |
-| init 6   | Reinicia la máquina |
-
+| Comando  | Descripción                 |
+|----------|-----------------------------|
+| reboot   | Reinicia la máquina         |
+| halt     | Apaga el sistema            |
+| shutdown | Apaga el sistema            |
+| init 0   | Apaga la máquina            |
+| init 6   | Reinicia la máquina         |
+| reisub   | Reinicia en caso de bloqueo |
 
 **Comandos para la gestión del sistema**
 
@@ -542,7 +542,7 @@ Se llama bashismo al uso de características de Bash que no están contempladas 
 | && orden_1 && orden_2 | Ejecuta la orden_2 si la orden_1 termina correctamente (OK)                |
 | || orden_1 || orden_2 | Ejecuta la orden_2 si la orden_1 no termina correctamente (OK)             |
 
-                      
+
 
 
 
