@@ -263,3 +263,29 @@ Las palabras con la forma $'string' se tratan de un modo especial. Estas palabra
 | \nnn                | El carácter de 8 bits cuyo valor es el número octal nnn (de uno a tres dígitos)                |
 | \xHH                | El carácter de 8 bits cuyo valor es el número hexadecimal HH (uno o dos dígitos hexadecimales) |
 | \cx                 | Un carácter control-X                                                                          |
+
+**Guiones de inicio de Bash**
+
+Cuando Bash arranca, ejecuta las órdenes que se encuentran en diferentes guiones.
+
+Cuando se invoca a Bash como un shell interactivo para el inicio de una sesión (login shell), o como un shell no interactivo con la opción --login, en primer lugar lee y ejecuta órdenes desde el archivo /etc/profile, si existe. Después, busca ~/.bash_profile, ~/.bash_login, y ~/.profile, en este orden, y lee y ejecuta las órdenes desde el primero que existe y es legible. La opción --noprofile puede utilizarse al comenzar un nuevo shell para inhibir este comportamiento.
+
+Cuando un login shell termina, Bash lee y ejecuta las órdenes de ~/.bash_logout, si existe.
+
+Cuando un shell interactivo que no es un login shell arranca, Bash lee y ejecuta órdenes desde ~/.bashrc, si existiese. Esto puede evitarse utilizando la opción --norc. La opción --rcfile archivo forzará a Bash a leer y ejecutar órdenes desde archivo en lugar de ~/.bashrc.
+
+Cuando Bash arranca de un modo no interactivo, por ejemplo para ejecutar un guion de consola diferente, busca la variable de entorno BASH_ENV, si existe expande su valor, y lo utiliza como el nombre del archivo para leer y ejecutar. Bash se comporta como si se ejecutase la siguiente orden:
+
+    if [ -n "$BASH_ENV" ]; then . "$BASH_ENV"; fi
+
+
+pero el valor de la variable PATH no se utiliza para buscar el archivo.
+
+Si se invoca a Bash con el nombre sh, intenta replicar el comportamiento de las versiones antiguas de sh, a la vez que se mantiene la conformidad con el estándar POSIX. Cuando se invoca como un login shell interactivo, o un shell no interactivo con la opción --login, primero intenta leer y ejecutar órdenes desde /etc/profile y ~/.profile, en este orden. La opción --noprofile puede utilizarse para evitar este comportamiento.
+
+Cuando se invoca como un shell interactivo con el nombre sh, Bash busca la variable ENV, si está definida expande su valor, y utiliza el valor expandido como el nombre de un archivo para leer y ejecutar. Como un shell invocado como sh no intenta leer y ejecutar órdenes desde ningún otro archivo de arranque, y la opción --rcfile no tiene efecto. Un shell no interactivo invocado con el nombre sh no intenta leer ningún otro archivo de arranque. Cuando se invoca como sh, Bash entra en el modo posix después de leer los archivos de inicio.
+
+Cuando se inicia Bash en el modo posix, por ejemplo con la opción --posix, sigue el estándar POSIX para los archivos de inicio. En este modo, los shells interactivos expanden la variable ENV y se leen, y ejecutan, las órdenes desde el archivo cuyo nombre es el valor de la variable expandida. No se lee ningún otro archivo de arranque.
+
+Bash intenta determinar cuando está siendo ejecutado por un dominio de shell remoto, normalmente rshd. Si Bash determina que está siendo ejecutado por rshd, lee y ejecuta órdenes desde ~/.bashrc, si este archivo existe y es legible. No hará esto si se invoca como sh. La opción --norc puede utilizarse para evitar este comportamiento, y la opción --rcfile puede utilizarse para forzar a leer otro archivo, pero rshd normalmente no invoca al shell con estas opciones o permite que sean especificadas.
+
