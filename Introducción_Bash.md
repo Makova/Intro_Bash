@@ -180,12 +180,12 @@ La sintaxis de Bash permite diferentes formar de redireción de entrada/salida d
 que es más simple que teclear la orden Bourne equivalente, "orden > archivo 2>&1". Desde la versión 2.05b, Bash puede redirigir la entrada estándar desde una cadena utilizando la siguiente sintaxis (denominada "here strings"):
 
     
-    orden <<< "cadena de leer como entrada   estándar"
+    orden <<< "cadena de leer como entrada estándar"
     
 
 Si la cadena contiene espacios en blanco, deben de utilizarse comillas.
 
-**Ejemplo** 
+*Ejemplo*: 
 
 Redirige la salida estándar a un archivo, escribe datos, cierra el archivo y reinicia stdout.
 
@@ -249,7 +249,7 @@ Esta sintaxis proporciona un rendimiento superior a lanzar un proceso separado p
 
 Las palabras con la forma $'string' se tratan de un modo especial. Estas palabras se expanden a string, con los caracteres escapados por la contrabarra reemplazados según especifica el lenguaje de [programación C](https://es.wikipedia.org/wiki/Lenguaje_de_programaci%C3%B3n_C). Las secuencias de escape con contrabarra, se decodifican del siguiente modo:
 
-                                           **Escapes con contrabarra**
+                                                 Escapes con contrabarra
 
 | Backslash escape    |                                     Se expande a...                                            |
 |---------------------|------------------------------------------------------------------------------------------------|
@@ -268,15 +268,15 @@ Las palabras con la forma $'string' se tratan de un modo especial. Estas palabra
 
 **Guiones de inicio de Bash**
 
-> Cuando Bash arranca, ejecuta las órdenes que se encuentran en diferentes guiones.
+Cuando Bash arranca, ejecuta las órdenes que se encuentran en diferentes guiones.
 
-> Cuando se invoca a Bash como un shell interactivo para el inicio de una sesión (login shell), o como un shell no interactivo con la opción --login, en primer lugar lee y ejecuta órdenes desde el archivo /etc/profile, si existe. Después, busca ~/.bash_profile, ~/.bash_login, y ~/.profile, en este orden, y lee y ejecuta las órdenes desde el primero que existe y es legible. La opción --noprofile puede utilizarse al comenzar un nuevo shell para inhibir este comportamiento.
+Cuando se invoca a Bash como un shell interactivo para el inicio de una sesión (login shell), o como un shell no interactivo con la opción --login, en primer lugar lee y ejecuta órdenes desde el archivo /etc/profile, si existe. Después, busca ~/.bash_profile, ~/.bash_login, y ~/.profile, en este orden, y lee y ejecuta las órdenes desde el primero que existe y es legible. La opción --noprofile puede utilizarse al comenzar un nuevo shell para inhibir este comportamiento.
 
-> Cuando un login shell termina, Bash lee y ejecuta las órdenes de ~/.bash_logout, si existe.
+Cuando un login shell termina, Bash lee y ejecuta las órdenes de ~/.bash_logout, si existe.
 
-> Cuando un shell interactivo que no es un login shell arranca, Bash lee y ejecuta órdenes desde ~/.bashrc, si existiese. Esto puede evitarse utilizando la opción --norc. La opción --rcfile archivo forzará a Bash a leer y ejecutar órdenes desde archivo en lugar de ~/.bashrc.
+Cuando un shell interactivo que no es un login shell arranca, Bash lee y ejecuta órdenes desde ~/.bashrc, si existiese. Esto puede evitarse utilizando la opción --norc. La opción --rcfile archivo forzará a Bash a leer y ejecutar órdenes desde archivo en lugar de ~/.bashrc.
 
-> Cuando Bash arranca de un modo no interactivo, por ejemplo para ejecutar un guion de consola diferente, busca la variable de entorno BASH_ENV, si existe expande su valor, y lo utiliza como el nombre del archivo para leer y ejecutar. Bash se comporta como si se ejecutase la siguiente orden:
+Cuando Bash arranca de un modo no interactivo, por ejemplo para ejecutar un guion de consola diferente, busca la variable de entorno BASH_ENV, si existe expande su valor, y lo utiliza como el nombre del archivo para leer y ejecutar. Bash se comporta como si se ejecutase la siguiente orden:
 
     if [ -n "$BASH_ENV" ]; then . "$BASH_ENV"; fi
 
@@ -285,9 +285,9 @@ pero el valor de la variable PATH no se utiliza para buscar el archivo.
 
 Si se invoca a Bash con el nombre sh, intenta replicar el comportamiento de las versiones antiguas de sh, a la vez que se mantiene la conformidad con el estándar POSIX. Cuando se invoca como un login shell interactivo, o un shell no interactivo con la opción --login, primero intenta leer y ejecutar órdenes desde /etc/profile y ~/.profile, en este orden. La opción --noprofile puede utilizarse para evitar este comportamiento.
 
-> Cuando se invoca como un shell interactivo con el nombre sh, Bash busca la variable ENV, si está definida expande su valor, y utiliza el valor expandido como el nombre de un archivo para leer y ejecutar. Como un shell invocado como sh no intenta leer y ejecutar órdenes desde ningún otro archivo de arranque, y la opción --rcfile no tiene efecto. Un shell no interactivo invocado con el nombre sh no intenta leer ningún otro archivo de arranque. Cuando se invoca como sh, Bash entra en el modo posix después de leer los archivos de inicio.
+Cuando se invoca como un shell interactivo con el nombre sh, Bash busca la variable ENV, si está definida expande su valor, y utiliza el valor expandido como el nombre de un archivo para leer y ejecutar. Como un shell invocado como sh no intenta leer y ejecutar órdenes desde ningún otro archivo de arranque, y la opción --rcfile no tiene efecto. Un shell no interactivo invocado con el nombre sh no intenta leer ningún otro archivo de arranque. Cuando se invoca como sh, Bash entra en el modo posix después de leer los archivos de inicio.
 
-> Cuando se inicia Bash en el modo posix, por ejemplo con la opción --posix, sigue el estándar [POSIX](https://es.wikipedia.org/wiki/POSIX) para los archivos de inicio. En este modo, los shells interactivos expanden la variable ENV y se leen, y ejecutan, las órdenes desde el archivo cuyo nombre es el valor de la variable expandida. No se lee ningún otro archivo de arranque.
+Cuando se inicia Bash en el modo posix, por ejemplo con la opción --posix, sigue el estándar [POSIX](https://es.wikipedia.org/wiki/POSIX) para los archivos de inicio. En este modo, los shells interactivos expanden la variable ENV y se leen, y ejecutan, las órdenes desde el archivo cuyo nombre es el valor de la variable expandida. No se lee ningún otro archivo de arranque.
 
 Bash intenta determinar cuando está siendo ejecutado por un dominio de shell remoto, normalmente rshd. Si Bash determina que está siendo ejecutado por rshd, lee y ejecuta órdenes desde ~/.bashrc, si este archivo existe y es legible. No hará esto si se invoca como sh. La opción --norc puede utilizarse para evitar este comportamiento, y la opción --rcfile puede utilizarse para forzar a leer otro archivo, pero rshd normalmente no invoca al shell con estas opciones o permite que sean especificadas.
 
@@ -295,7 +295,10 @@ Bash intenta determinar cuando está siendo ejecutado por un dominio de shell re
 
 Se llama bashismo al uso de características de Bash que no están contempladas en las especificaciones [POSIX](https://es.wikipedia.org/wiki/POSIX) para los intérpretes de comandos. En general, se recomienda evitarlas, para permitir la portabilidad de guiones a otros sistemas operativos.
 
-**Comandos Bash**
+
+
+                                                           Comandos Bash
+
 
 
 | Comando | Descripción                                     |
@@ -387,6 +390,7 @@ Se llama bashismo al uso de características de Bash que no están contempladas 
 | groupadd | Agrega un nuevo grupo                                             |
 | chown    | Cambia el propietario de un fichero                               |
 
+
 **Comandos para la gestión de procesos**
 
 | Comando | Descripción                                                             |
@@ -401,6 +405,7 @@ Se llama bashismo al uso de características de Bash que no están contempladas 
 | bg      | Pone un proceso en segundo plano                                        |
 | &       | Colocado al final de la línea de un comando,lo ejecuta en segundo plano |
 | nice    | Ajusta la prioridad de un proceso de -20 a 19                           |
+
 
 **Comandos para la gestión de discos y dispositivos**
 
