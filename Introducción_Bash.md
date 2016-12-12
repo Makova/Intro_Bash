@@ -246,7 +246,22 @@ Esta sintaxis proporciona un rendimiento superior a lanzar un proceso separado p
 
 **Escape con contrabarra**
 
+Las palabras con la forma $'string' se tratan de un modo especial. Estas palabras se expanden a string, con los caracteres escapados por la contrabarra reemplazados según especifica el lenguaje de [programación C](https://es.wikipedia.org/wiki/Lenguaje_de_programaci%C3%B3n_C). Las secuencias de escape con contrabarra, se decodifican del siguiente modo:
 
-
-
-
+                                Escapes con contrabarra
+| Backslash |                  Se expande a... 
+   escape                                                                                           |
+|-----------|------------------------------------------------------------------------------------------------|
+|     |                                                                                |
+| \b        | Un carácter de retroceso                                                                       |
+| \e        | Un carácter de escape                                                                          |
+| \f        | Un carácter de alimentación de línea (form feed)                                               |
+| \n        | Un carácter de nueva línea                                                                     |
+| \r        | Un carácter de retorno de carro                                                                |
+| \t        | Un tabulador horizontal                                                                        |
+| \v        | Un tabulador vertical                                                                          |
+| \\        | Un carácter contrabarra                                                                        |
+| \'        | Un carácter de comilla simple                                                                  |
+| \nnn      | El carácter de 8 bits cuyo valor es el número octal nnn (de uno a tres dígitos)                |
+| \xHH      | El carácter de 8 bits cuyo valor es el número hexadecimal HH (uno o dos dígitos hexadecimales) |
+| \cx       | Un carácter control-X                                                                          |
