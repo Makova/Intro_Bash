@@ -545,4 +545,5 @@ Se llama bashismo al uso de características de Bash que no están contempladas 
                       
 
 
-Definición de la Wikipedia: [wiki/Bash](https://es.wikipedia.org/wiki/Bash)
+
+> Definición sobre Bash de la Wikipedia: [wiki/Bash](https://es.wikipedia.org/wiki/Bash)
