@@ -68,7 +68,7 @@ hola=1
 $hola
 #Mostrando el contenido de la variable
 echo $hola
-
+```
 Explicación
 
 Si ponemos atención al código, en BASH, las variables simplemente se reemplazan por su valor al llamarlas, de modo que en ellas podemos almacenar X texto ó numero, ya sean comandos o lo que sea.
@@ -132,15 +132,15 @@ los guiones de bash reciben los parámetros que les pasa la shell como $1, $2,..
 Por ejemplo, si nuestro guion necesita dos parámetros pondremos:
 ```bash
 if [ $# -lt 2 ]; then
-echo "Necesitas pasar dos parámetros."
-exit 1
+    echo "Necesitas pasar dos parámetros."
+    exit 1
 fi
 ```
 Además disponemos del array $@, el cual contiene todos los parámetros pasados al guion y podemos iterar sobre estos de la siguiente manera:
 ```bash
 for param in  "$@"
 do
-echo "$param"
+    echo "$param"
 done
 ```
 **Matemáticas con enteros**
