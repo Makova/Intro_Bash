@@ -172,14 +172,15 @@ Un proceso Bash no puede realizar cálculos en [coma flotante](https://es.wikipe
 
 La sintaxis de Bash permite diferentes formar de [redireción](https://es.wikipedia.org/wiki/Redirecci%C3%B3n) de entrada/salida de las que el shell de Bourne tradicional carece.  Bash puede redirigir la [salida estándar](https://es.wikipedia.org/wiki/Salida_est%C3%A1ndar) y los flujos de [error estándar](https://es.wikipedia.org/wiki/Error_est%C3%A1ndar) a la vez utilizando la sintaxis:
 
-
-    orden >$ archivo
+```bash
+orden >$ archivo
+```
 
 que es más simple que teclear la orden Bourne equivalente, "orden > archivo 2>&1". Desde la versión 2.05b, Bash puede redirigir la entrada estándar desde una cadena utilizando la siguiente sintaxis (denominada "here strings"):
 
-
-    orden <<< "cadena de leer como entrada estándar"
-
+```bash
+orden <<< "cadena de leer como entrada estándar"
+```
 
 Si la cadena contiene espacios en blanco, deben de utilizarse comillas.
 
@@ -187,59 +188,60 @@ Si la cadena contiene espacios en blanco, deben de utilizarse comillas.
 
 Redirige la salida estándar a un archivo, escribe datos, cierra el archivo y reinicia [stdout](https://es.wikipedia.org/w/index.php?title=Stdout&action=edit&redlink=1).
 
-
-    # hace que el descriptor de archivo 6 sea una copia de stdout (descriptor archivo 1)
-    exec 6>&1
-    # abre el archivo "test.data" para escritura
-    exec 1>test.data
-    # genera algún contenido
-    echo "data:data:data"
-    # recupera stdout original, al hacer que sea una copia del descriptor de archivo 6
-    exec 1>&6
-    # cierra el descriptor de archivo 6
-    exec 6>&-
+```bash
+# hace que el descriptor de archivo 6 sea una copia de stdout (descriptor archivo 1)
+exec 6>&1
+# abre el archivo "test.data" para escritura
+exec 1>test.data
+# genera algún contenido
+echo "data:data:data"
+# recupera stdout original, al hacer que sea una copia del descriptor de archivo 6
+exec 1>&6
+# cierra el descriptor de archivo 6
+exec 6>&-
+```
 
 **Abre y cierra archivos**
 
-
-    # abre el archivo test.data para lectura
-    exec 6<test.data
-    # lee hasta el final del archivo
-    while read -u 6 dta
-    do
+```bash
+# abre el archivo test.data para lectura
+exec 6<test.data
+# lee hasta el final del archivo
+while read -u 6 dta
+do
     echo "$dta"
-    done
-    # cierra el archivo test.data
-    exec 6<&-
-
+done
+# cierra el archivo test.data
+exec 6<&-
+```
 
 **Captura la salida de órdenes externas**
 
-
-    # ejecuta 'find' y guarda los resultados en VAR
-    # busca nombres de archivos que terminan con la letra "h"
-    VAR=$(find . -name "*h")
-
+```bash
+# ejecuta 'find' y guarda los resultados en VAR
+# busca nombres de archivos que terminan con la letra "h"
+VAR=$(find . -name "*h")
+```
 
 **Expresiones regulares**
 
 Los procesos Bash 3.0 soportan emparejamientos de [expresiones regulares](https://es.wikipedia.org/wiki/Expresi%C3%B3n_regular) utilizando la siguiente sintaxis, reminiscente de [Perl](https://es.wikipedia.org/wiki/Perl):
 
-
-    [[ string =~ regex]]
-
+```bash
+[[ string =~ regex]]
+```
 
 La sintaxis de expresiones regulares es la misma que documenta la [página de manual](https://es.wikipedia.org/wiki/Man_(Unix) regex(3). El estado de salida de la orden anterior es 0 si la cadena concuerda con la expresión regular, y 1 si no casan. En las expresiones regulares puede accederse a las partes delimitadas por paréntesis, utilizando la variable shell BASH_REMATCH, de la siguiente manera:
 
-
-    if [[ foobarbletch =~ 'foo(bar)bl(.*)']]
-    then
-         echo The regex matches!
-         echo $BASH_REMATCH      -- outputs: foobarbletch
-         echo ${BASH_REMATCH[1]} -- outputs: bar
-         echo ${BASH_REMATCH[2]} -- outputs: etch
-    fi
-
+```bash
+if [[ foobarbletch =~ 'foo(bar)bl(.*)']]
+then
+     echo The regex matches!
+     echo $BASH_REMATCH      -- outputs: foobarbletch
+     echo ${BASH_REMATCH[1]} -- outputs: bar
+     echo ${BASH_REMATCH[2]} -- outputs: etch
+fi
+```
 
 Esta sintaxis proporciona un rendimiento superior a lanzar un proceso separado para ejecutar una orden [grep](https://es.wikipedia.org/wiki/Grep), porque el emparejamiento de las expresiones regulares tiene lugar en el propio proceso Bash. Si la expresión regular o la cadena contiene un espacio en blanco o un [metacarácter](https://es.wikipedia.org/wiki/Metacar%C3%A1cter) del shell (como '*' o '?'), debe ser entrecomillada.
 
@@ -276,8 +278,9 @@ Cuando un shell interactivo que no es un login shell arranca, Bash lee y ejecuta
 
 Cuando Bash arranca de un modo no interactivo, por ejemplo para ejecutar un guion de consola diferente, busca la variable de entorno BASH_ENV, si existe expande su valor, y lo utiliza como el nombre del archivo para leer y ejecutar. Bash se comporta como si se ejecutase la siguiente orden:
 
-    if [ -n "$BASH_ENV" ]; then . "$BASH_ENV"; fi
-
+```bash
+if [ -n "$BASH_ENV" ]; then . "$BASH_ENV"; fi
+```
 
 pero el valor de la variable PATH no se utiliza para buscar el archivo.
 
