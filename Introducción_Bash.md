@@ -17,14 +17,14 @@ Para empezar, haré una mención al simplismo "Hola mundo" de BASH, y también l
 
 Es muy simple, en realidad. Lo que hacemos aquí al escribir primero "#!/bin/bash", es llamar a nuestra shell BASH, que por lo general se ubica en /bin/bash, pero podría estar en otro lugar, así que si no la tenemos ahí se ejecutara el comando "locate bash" desde nuestra terminal, o bien si no tenemos locate podemos usar "which bash" o bien desde nuestro directorio raiz ( / ) ejecutamos "find bash" para localizar la ruta del programa bash. En mi caso con una terminal zsh la ruta es: #!/usr/bin/zsh
 
-    :::bash
+:::bash
     #!/bin/bash
     # Script de Hola Mundo
     echo "Hola Mundo"
 
 Salida:
 
-    :::bash
+:::bash
     Hola Mundo
 
 **Comentario en Bash**
