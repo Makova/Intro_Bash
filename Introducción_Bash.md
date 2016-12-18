@@ -45,11 +45,11 @@ Como en todo lenguaje, necesitamos del uso de variables, que nos servirán para 
 **Asignando variables**
 
 En BASH, las variables se asignan simplemente dando el nombre de la variable y su valor:
-
-    #!/bin/bash
-    #Asignando variables
-    hola=1
-
+```bash
+#!/bin/bash
+#Asignando variables
+hola=1
+```
 Como podemos leer aquí, este código asigna el valor 1 a la variable "hola". En BASH las variables son "CASE SENSITIVE" (sensibles), es decir, la variable ``Hola`` no es lo mismo que ``HOLA`` ni que ``holA``.
 
 Otro de los puntos importantes de las variables en BASH es que no tenemos que asignarles un tipo, es decir, podemos darle a las variables cualquier valor y lo aceptará sin tener que decirle a BASH si es numérico o si son letras.
@@ -60,14 +60,14 @@ Ya sabemos asignar una variable, pero de poco nos sirve si no podemos llamarla.
 
 En BASH, las variables las invocamos simplemente anteponiendo un símbolo de dolar '$' antes del nombre de la variable.
 Ejemplo:
-
-    #!/bin/bash
-    #Asignando variables
-    hola=1
-    #Llamando a la variable $hola
-    $hola
-    #Mostrando el contenido de la variable
-    echo $hola
+```bash
+#!/bin/bash
+#Asignando variables
+hola=1
+#Llamando a la variable $hola
+$hola
+#Mostrando el contenido de la variable
+echo $hola
 
 Explicación
 
@@ -76,14 +76,14 @@ Si ponemos atención al código, en BASH, las variables simplemente se reemplaza
 Al llamar a la variable, observamos que simplemente da el valor y lo pasa como una orden al interprete, pero si lo ponemos siguiendo un comando como ``echo`` entonces este mostrará el contenido de la variable.
 
 Ejemplo de uso:
-
-    #!/bin/bash
-    #
-    # Se guarda en la variable el valor generado    por $RANDOM,
-    # el % 5 asegura obtener un numero menor a 5 .
-    RNM=`expr $RANDOM % 5`
-    echo $RNM
-
+```bash
+#!/bin/bash
+#
+# Se guarda en la variable el valor generado    por $RANDOM,
+# el % 5 asegura obtener un numero menor a 5 .
+RNM=`expr $RANDOM % 5`
+echo $RNM
+```
 **Comandos básicos**
 
 Para poder trabajar eficientemente en BASH, es indispensable conocer los comandos más básicos, aquí una pequeña lista que debemos conocer a la perfección:
@@ -130,22 +130,19 @@ Para poder trabajar eficientemente en BASH, es indispensable conocer los comando
 
 los guiones de bash reciben los parámetros que les pasa la shell como $1, $2,..., $n. Podemos saber cuantos hemos recibido con el símbolo $#.
 Por ejemplo, si nuestro guion necesita dos parámetros pondremos:
-
-
-    if [ $# -lt 2 ]; then
-    echo "Necesitas pasar dos parámetros."
-    exit 1
-    fi
-
+```bash
+if [ $# -lt 2 ]; then
+echo "Necesitas pasar dos parámetros."
+exit 1
+fi
+```
 Además disponemos del array $@, el cual contiene todos los parámetros pasados al guion y podemos iterar sobre estos de la siguiente manera:
-
-
-    for param in  "$@"
-    do
-     echo "$param"
-    done
-
-
+```bash
+for param in  "$@"
+do
+echo "$param"
+done
+```
 **Matemáticas con enteros**
 
 Una gran limitación del intérprete Bourne es que no puede realizar cálculos con enteros sin lanzar un proceso externo. En cambio, un proceso Bash puede realizar cálculos con enteros utilizando la orden((...)) y la sintaxis de variables $[...] de la siguiente manera:
@@ -160,15 +157,13 @@ Una gran limitación del intérprete Bourne es que no puede realizar cálculos c
 
 
 La orden ((...)) también se puede utilizar en sentencias condicionales, ya que su [código de retorno](https://es.wikipedia.org/w/index.php?title=C%C3%B3digo_de_retorno&action=edit&redlink=1) es 0 o 1 dependiendo de si la condición cierta o falsa:
-
-
-    if ((VAR == Y * 3 + X * 2))
-    then
-        echo Si
-    fi
-    ((Z > 23)) && echo Si
-
-
+```bash
+if ((VAR == Y * 3 + X * 2))
+then
+echo Si
+fi
+((Z > 23)) && echo Si
+```
 La orden ((...)) soporta los siguientes [operadores relacionales](https://meta.wikimedia.org/wiki/w:en:Relational_operator) : **'==', '!=', '>', '<', '>=', y '<='.
 
 Un proceso Bash no puede realizar cálculos en [coma flotante](https://es.wikipedia.org/wiki/Coma_flotante). Los únicos shell Unix capaces de esto son el [Korn Shell](https://es.wikipedia.org/wiki/Korn_Shell) (versión de 1993) y el zsh (a partir de la versión 4.0).
