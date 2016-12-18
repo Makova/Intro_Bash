@@ -160,7 +160,7 @@ La orden ((...)) también se puede utilizar en sentencias condicionales, ya que 
 ```bash
 if ((VAR == Y * 3 + X * 2))
 then
-echo Si
+        echo Si
 fi
 ((Z > 23)) && echo Si
 ```
