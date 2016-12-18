@@ -17,16 +17,17 @@ Para empezar, haré una mención al simplismo "Hola mundo" de BASH, y también l
 
 Es muy simple, en realidad. Lo que hacemos aquí al escribir primero "#!/bin/bash", es llamar a nuestra shell BASH, que por lo general se ubica en /bin/bash, pero podría estar en otro lugar, así que si no la tenemos ahí se ejecutara el comando "locate bash" desde nuestra terminal, o bien si no tenemos locate podemos usar "which bash" o bien desde nuestro directorio raiz ( / ) ejecutamos "find bash" para localizar la ruta del programa bash. En mi caso con una terminal zsh la ruta es: #!/usr/bin/zsh
 
-:::bash
-    #!/bin/bash
-    # Script de Hola Mundo
-    echo "Hola Mundo"
-
+ ```bash
+#!/bin/bash
+# Script de Hola Mundo
+echo "Hola Mundo"
+```    
 Salida:
 
-:::bash
-    Hola Mundo
-
+```bash
+Hola Mundo
+```    
+    
 **Comentario en Bash**
 
 Pero ¿el símbolo '#' escrito al inicio de una linea, es un comentario? En realidad sí, como en la segunda linea vemos, eso es un comentario, es decir, algo que no es interpretado y está ahí para que el programador/coder/scripter se ubique y sepa que es lo que hace el código, esto ayuda a tener mejor orden y al corregir el código si tiene BUGS. Pero la excepción a esto, es al escribir #!/ruta/de/interprete , esto nos sirve para llamar a nuestro interprete, como perl, bash, sh, python, etc, (que son otros lenguajes) y se usa para los lenguajes interpretados, de modo que se ejecuten en donde corresponde....
