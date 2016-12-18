@@ -147,16 +147,17 @@ done
 
 Una gran limitación del intérprete Bourne es que no puede realizar cálculos con enteros sin lanzar un proceso externo. En cambio, un proceso Bash puede realizar cálculos con enteros utilizando la orden((...)) y la sintaxis de variables $[...] de la siguiente manera:
 
-
-    VAR=55                 # Asigna el valor        entero 55 a la variable VAR
-    ((VAR = VAR + 1))      # Suma uno a la variable VAR. Observe la ausencia del carácter  '$'.
-    ((++VAR))              # Otra forma de sumar uno a VAR. Preincremento estilo C.
-    ((VAR++))              # Otra forma de sumar uno a VAR. Postincremento estilo C.
-    echo $[VAR * 22]       # Multiplica la variable VAR por 22 y sustituye la orden por el resultado.
-    echo $((VAR * 22))     # Otra forma de realizar lo mismo.
-
+```bash
+VAR=55                 # Asigna el valor        entero 55 a la variable VAR
+((VAR = VAR + 1))      # Suma uno a la variable VAR. Observe la ausencia del carácter  '$'.
+((++VAR))              # Otra forma de sumar uno a VAR. Preincremento estilo C.
+((VAR++))              # Otra forma de sumar uno a VAR. Postincremento estilo C.
+echo $[VAR * 22]       # Multiplica la variable VAR por 22 y sustituye la orden por el resultado.
+echo $((VAR * 22))     # Otra forma de realizar lo mismo.
+```
 
 La orden ((...)) también se puede utilizar en sentencias condicionales, ya que su [código de retorno](https://es.wikipedia.org/w/index.php?title=C%C3%B3digo_de_retorno&action=edit&redlink=1) es 0 o 1 dependiendo de si la condición cierta o falsa:
+
 ```bash
 if ((VAR == Y * 3 + X * 2))
 then
