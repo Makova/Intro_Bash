@@ -1,6 +1,6 @@
 
 
-El texto legal, de la licencia completa, puede verlo [https://creativecommons.org/licenses/by-sa/3.0/legalcode](acá).
+El texto legal, de la licencia completa, puede verlo [aquí](https://creativecommons.org/licenses/by-sa/3.0/legalcode).
 (Advertencia: Este es un resumen y no un sustituto de la licencia.)
 
 Usted es libre para:
